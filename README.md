@@ -1,5 +1,8 @@
 # LibraryOS - Smart Library Management System
 
+![image](https://github.com/user-attachments/assets/69a0be33-5c23-491b-ab84-92f400352028)
+
+
 LibraryOS is a modern dashboard for librarians to efficiently manage books, track locations using RFID technology, and monitor library activities.
 > 🚧 **This project is currently in development.** It is a hobby project aimed at updating an old system with modern technologies. Regular updates will be made as improvements continue.
 ## 🚀 Features
