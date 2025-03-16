@@ -20,10 +20,10 @@ import { Button } from "@/components/ui/button"
 
 interface LibrarySidebarProps {
   open: boolean
-  setOpen: (open: boolean) => void
+  setOpenAction: (open: boolean) => void
 }
 
-export function LibrarySidebar({ open, setOpen }: LibrarySidebarProps) {
+export function LibrarySidebar({ open, setOpenAction }: LibrarySidebarProps) {
   const pathname = usePathname()
 
   const navItems = [
@@ -49,7 +49,7 @@ export function LibrarySidebar({ open, setOpen }: LibrarySidebarProps) {
           <BookMarked className="h-6 w-6" />
           {open && <span className="text-xl font-bold">LibraryOS</span>}
         </div>
-        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpen(false)}>
+        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpenAction(false)}>
           <Menu className="h-6 w-6" />
           <span className="sr-only">Close sidebar</span>
         </Button>

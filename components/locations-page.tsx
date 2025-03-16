@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
@@ -17,7 +17,7 @@ import {
   TableIcon,
   Laptop,
   Users,
-  CircleDashed,
+  CircleDashed, ArrowUpDown,
 } from "lucide-react"
 
 export function LocationsPage() {
@@ -26,17 +26,38 @@ export function LocationsPage() {
   const [searchQuery, setSearchQuery] = useState("")
 
   // Location types with their corresponding icons
-  const locationIcons = {
+  const locationIcons: Record<LocationType, React.FC<{ className: string }>> = {
     shelf: BookOpen,
     desk: Armchair,
     table: TableIcon,
     computer: Laptop,
     studyRoom: Users,
     returnCart: CircleDashed,
-  }
+    checkout: ArrowUpDown,
+  };
+
+  type LocationType =
+      | "shelf"
+      | "desk"
+      | "table"
+      | "computer"
+      | "studyRoom"
+      | "returnCart"
+      | "checkout";
+
+  type Location = {
+    id: string;
+    type: LocationType;
+    name: string;
+    books: number;
+    available: number;
+    status: "normal" | "attention";
+    categories: string[];
+    lastScanned: string;
+  };
 
   // Sample location data
-  const locationData = {
+  const locationData: Record<string, Location[]> = {
     floor1: [
       {
         id: "A1",
@@ -223,28 +244,29 @@ export function LocationsPage() {
     ],
   }
 
-  // Filter locations based on search query
-  const filteredLocations = locationData[activeFloor].filter(
-    (location) =>
-      location.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      location.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      location.categories.some((category) => category.toLowerCase().includes(searchQuery.toLowerCase())),
-  )
+
+  const filteredLocations = locationData[activeFloor]?.filter(
+      (location) =>
+          location.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          location.id?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          location.categories?.some((category) => category?.toLowerCase().includes(searchQuery.toLowerCase()))
+  ) ?? [];
+
 
   // Get icon component based on location type
-  const getLocationIcon = (type) => {
+  const getLocationIcon = (type: LocationType) => {
     const IconComponent = locationIcons[type] || BookOpen
     return <IconComponent className="h-6 w-6" />
   }
 
   // Get status icon based on location status
-  const getStatusIcon = (status) => {
+  const getStatusIcon = (status: "normal" | "attention") => {
     return status === "normal" ? (
-      <CheckCircle2 className="h-5 w-5 text-green-500" />
+        <CheckCircle2 className="h-5 w-5 text-green-500" />
     ) : (
-      <AlertCircle className="h-5 w-5 text-amber-500" />
-    )
-  }
+        <AlertCircle className="h-5 w-5 text-amber-500" />
+    );
+  };
 
   return (
     <main className="p-6">
