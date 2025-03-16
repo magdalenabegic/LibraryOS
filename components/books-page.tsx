@@ -59,6 +59,8 @@ export function BooksPage() {
     checkout: ArrowUpDown,
   }
 
+  type LocationType = "shelf" | "desk" | "table" | "computer" | "studyRoom" | "returnCart" | "checkout";
+
   // Sample book data with location information
   const books = [
     {
@@ -250,9 +252,9 @@ export function BooksPage() {
   const totalPages = Math.ceil(filteredBooks.length / booksPerPage)
 
   // Get icon component based on location type
-  const getLocationIcon = (type) => {
-    const IconComponent = locationIcons[type] || BookOpen
-    return <IconComponent className="h-4 w-4" />
+  const getLocationIcon = (type: keyof typeof locationIcons) => {
+      const IconComponent = locationIcons[type] || BookOpen
+      return <IconComponent className="h-4 w-4" />
   }
 
   return (
@@ -381,7 +383,7 @@ export function BooksPage() {
                           }
                           className="flex items-center gap-1"
                         >
-                          {getLocationIcon(book.location.type)}
+                          {getLocationIcon(book.location.type as LocationType)}
                           <span className="capitalize">{book.location.type}</span>
                         </Badge>
                         <div className="text-xs">
