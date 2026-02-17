@@ -5,16 +5,16 @@ LibraryOS is a modern dashboard for librarians to efficiently manage books, trac
 
 ![image](https://github.com/user-attachments/assets/69a0be33-5c23-491b-ab84-92f400352028)
 
-## 🚀 Features
+## Features
 
-- 📊 **Dashboard Overview**: Real-time statistics and activity monitoring  
-- 📚 **Book Management**: Comprehensive book catalog with search and filtering  
-- 📍 **Location Tracking**: Visual and list views of book locations throughout the library  
-- 🔄 **RFID Integration**: Track books with RFID technology for real-time location data  
-- 👤 **Member Management**: Track member information and book checkouts  
-- 📱 **Responsive Design**: Works on desktop, tablet, and mobile devices  
+- **Dashboard Overview**: Real-time statistics and activity monitoring  
+- **Book Management**: Comprehensive book catalog with search and filtering  
+- **Location Tracking**: Visual and list views of book locations throughout the library  
+- **RFID Integration**: Track books with RFID technology for real-time location data  
+- **Member Management**: Track member information and book checkouts  
+- **Responsive Design**: Works on desktop, tablet, and mobile devices  
 
-## 🛠 Technologies Used
+## Technologies Used
 
 - **Next.js** – React framework for server-rendered applications  
 - **TypeScript** – Type-safe JavaScript  
@@ -22,12 +22,12 @@ LibraryOS is a modern dashboard for librarians to efficiently manage books, trac
 - **shadcn/ui** – Reusable UI components  
 - **Lucide Icons** – Beautiful, consistent icons  
 
-## 🔧 Prerequisites
+## Prerequisites
 
 - **Node.js** 18.x or later  
 - **npm** or **yarn** package manager  
 
-## 📦 Installation
+## Installation
 
 ```bash
 # Clone the repository
